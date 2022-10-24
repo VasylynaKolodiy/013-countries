@@ -1,0 +1,110 @@
+.country {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
+    padding: 0;
+    border-radius: 10px;
+    height: 250px;
+    //max-height: 250px;
+    transition: .3s linear;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid lightgrey;
+    align-self: center;
+    margin: auto;
+    box-shadow: 0 30px 30px -15px #111;
+    &:hover {
+      align-self: flex-start;
+      height: 350px;
+      //max-height: 350px;
+      margin: 0;
+      padding: 0 0 10px 0;
+
+      .country__imageWrapper {
+        height: 50%;
+      }
+      .country__link {
+        background: none;
+      }
+      .country__link-button {
+        color: transparent;
+        background: transparent;
+        text-shadow: none;
+      }
+      .country__content {
+        max-height: 49%;
+      }
+    }
+  }
+
+  &__imageWrapper {
+    height: 100%;
+    width: 100%;
+    transition: .3s linear;
+    z-index: 1;
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    display: block;
+  }
+
+  &__content {
+    padding: 0 20px;
+    display: flex;
+    max-height: 0;
+    justify-content: space-between;
+    flex-direction: column;
+    transition: .3s linear;
+  }
+
+  &__name {
+    margin: 20px 0;
+    font-size: 20px;
+  }
+
+  &__info-item {
+    margin-bottom: 5px;
+  }
+
+  &__info-item span {
+    font-weight: bold;
+  }
+
+  &__link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    display: flex;
+    font-size: 26px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px 2px white;
+    margin: 0 auto;
+    transition: .3s linear;
+  }
+
+  &__link-button {
+    transition: .3s linear;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    color: black;
+    margin: 0 5px;
+    text-align: center;
+  }
+
+}

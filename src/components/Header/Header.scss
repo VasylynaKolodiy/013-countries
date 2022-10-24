@@ -1,0 +1,31 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  //border-bottom: 1px solid black;
+  box-shadow: 0 15px 10px -15px #111;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 20;
+  padding: 20px 50px;
+  background-color: inherit;
+  &__thema{
+    width: 125px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__thema svg{
+    width: 40px;
+    height: 40px;
+  }
+  .dark path{
+    fill: white;
+    transition: .3s linear;
+  }
+
+}

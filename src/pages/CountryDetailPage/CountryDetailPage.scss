@@ -1,0 +1,131 @@
+.countryDetail {
+  padding-top: 50px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 50px;
+    padding: 0 0 50px 0;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    margin-bottom: 30px;
+    cursor: pointer;
+  }
+
+  .arrow {
+    width: 30px;
+    height: auto;
+  }
+
+  .arrow path {
+    transition: .3s linear;
+    fill: black;
+  }
+
+  &__backLink {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__flagWrapper {
+    flex: 1;
+    height: auto;
+    //border: 1px solid black;
+
+  }
+
+  &__flag {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid darkgrey;
+    box-shadow: 0 30px 30px -15px #111;
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__content {
+    padding: 5px;
+  }
+
+  &__content span {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  &__table {
+    display: flex;
+    gap: 70px;
+    margin-bottom: 50px;
+  }
+
+  &__contentBorders span {
+    font-weight: bold;
+  }
+
+  &__contentBorders {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  &__borderWrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__border {
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px;
+    text-align: center;
+    transition: .3s linear;
+
+    &:hover {
+      background-color: darkgrey;
+    }
+  }
+
+  &__borderLink {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__noborders {
+    position: relative;
+    top: -48px;
+    left: 150px;
+  }
+
+
+}
