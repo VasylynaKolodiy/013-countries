@@ -11,7 +11,7 @@ const CountryDetailPage = () => {
   const params = useParams()
   const [country, setCountry] = useState({});
   const [codes, setCodes] = useState({});
-  const [fetchCountry, isLoading, error] = useFetching(async () => {
+  const [fetchCountry, isLoading] = useFetching(async () => {
     const response = await getDataCountries.getDetailCountry(params.name);
     setCountry(response.data[0]);
     const responseCode = await getDataCountries.getNameFromCode(response.data[0].borders.join(','))
@@ -19,8 +19,8 @@ const CountryDetailPage = () => {
   })
 
   useEffect(() => {
-    fetchCountry()
-  }, [params.name])
+    fetchCountry();
+  }, [params.name]) //eslint-disable-line
 
   let history = useNavigate();
 
@@ -35,8 +35,9 @@ const CountryDetailPage = () => {
         : <div className="countryDetail__home container">
           <div className='countryDetail__back'>
             <Arrow className='arrow'/>
-            <a className='countryDetail__backLink' onClick={() => history(-1)}>
-            </a>
+            <div className='countryDetail__backLink' onClick={() => history(-1)}>
+
+            </div>
             Back
           </div>
 
@@ -58,7 +59,7 @@ const CountryDetailPage = () => {
                   </p>
 
                   <p className="countryDetail__content">
-                    <span>Population: </span>{country.population && country.population.toLocaleString() || "-"}
+                    <span>Population: </span>{country.population ? country.population.toLocaleString() : "-"}
                   </p>
 
                   <p className="countryDetail__content">
@@ -81,11 +82,11 @@ const CountryDetailPage = () => {
                   </p>
 
                   <p className="countryDetail__content">
-                    <span>Currency: </span>{country.currencies && country.currencies[0].name || "-"}
+                    <span>Currency: </span>{country.currencies ? country.currencies[0].name : "-"}
                   </p>
 
                   <p className="countryDetail__content">
-                    <span>Languages: </span>{country.languages && country.languages[0].name || "-"}
+                    <span>Languages: </span>{country.languages ? country.languages[0].name : "-"}
                   </p>
                 </div>
               </div>
@@ -93,7 +94,8 @@ const CountryDetailPage = () => {
               <div className="countryDetail__contentBorders">
                 <p><span>Border Countries: </span></p>
                 <div className='countryDetail__borderWrapper'>
-                  {country.borders && country.borders.map((border, i) =>
+                  {country.borders
+                    ? country.borders.map((border, i) =>
                     codes[i] &&
                     <div className='countryDetail__border' key={i}>
                       {codes[i].name}
@@ -101,10 +103,9 @@ const CountryDetailPage = () => {
                       </Link>
                     </div>
                   )
-                  ||
+                  :
                   <div className='countryDetail__noborders'> There is no border country</div>
                   }
-
                 </div>
               </div>
             </div>

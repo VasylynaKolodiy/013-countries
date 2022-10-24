@@ -33,6 +33,7 @@ const CountryItem = ({country}) => {
 
       </div>
     </div>
+
   );
 };
 

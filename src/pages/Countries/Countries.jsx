@@ -11,14 +11,14 @@ import Loader from "../../components/Loader/Loader";
 const Countries = () => {
 
   const [countries, setCountries] = useState([]);
-  const [fetchCountries, isCountriesLoading, countriesError] = useFetching(async () => {
+  const [fetchCountries, isCountriesLoading] = useFetching(async () => {
     const response = await getDataCountries.getAllCountries();
     setCountries(response.data);
   })
 
   useEffect(() => {
     fetchCountries()
-  }, [])
+  }, []) //eslint-disable-line
 
   const startCount = 8;
   let [count, setCount] = useState(startCount);
@@ -34,7 +34,6 @@ const Countries = () => {
   function onChangeRegion(event) {
     setMyRegion(event.target.value)
   }
-
 
   let countriesByRegion
   myRegion
@@ -65,11 +64,23 @@ const Countries = () => {
               <input className='countriesPage__search myselect'
                      id='countriesPage__search'
                      type='search'
+                     value={searchCountry}
                      onChange={onChangeSearch}
                      placeholder=' '/>
 
               <label className='countriesPage__searchLabel'
                      htmlFor='countriesPage__search'>Search for a country...</label>
+
+              {searchCountry
+              && <button className='myselect__reset myselectSearch'
+                         type='reset'
+                         onClick={() => {
+                           setSearchCountry('')
+                         }}>
+                <ResetButton className='myselect__resetImage'/>
+              </button>}
+
+
             </div>
 
 
@@ -103,14 +114,17 @@ const Countries = () => {
                   <ResetButton className='myselect__resetImage'/>
                 </button>}
               </form>
-
-
             </div>
           </div>
 
-          <CountriesList countries={mySearchCountriesInRegion}
-                         countOnPage={countOnPage}>
-          </CountriesList>
+          {
+            mySearchCountriesInRegion.length > 0
+              ? <CountriesList countries={mySearchCountriesInRegion}
+                               countOnPage={countOnPage}>
+              </CountriesList>
+              : <h2>No country found</h2>
+          }
+
           {countOnPage < mySearchCountriesInRegion.length &&
           <button className='countriesPage__loadButton'
                   onClick={() => setCountOnPage(Number(countOnPage) + Number(count))}>

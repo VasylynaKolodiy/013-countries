@@ -13,16 +13,12 @@
     width: 250px;
     padding: 0 10px;
     font-size: 16px;
-    //border: none;
     box-shadow: 0 15px 10px -15px #111;
     background: transparent;
     outline: none;
     color: inherit;
     border: 1px solid darkgrey;
     border-radius: 10px;
-
-    //appearance: none;       /* Remove default arrow */
-    //background-image: url(...);   /* Add custom arrow */
   }
 
   &__select {
@@ -37,26 +33,10 @@
     position: relative;
   }
 
-  //&__searchClose{
-  //  width: 15px;
-  //  height: 15px;
-  //  position: absolute;
-  //  right: 10px;
-  //  top: 20px;
-  //  cursor: pointer;
-  //}
-
   input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
-    height: 30px;
-    width: 30px;
-    background: url('../../assetes/img/resetButton.svg') no-repeat 50% 50%;
-    background-size: contain;
-    opacity: 1;
-    cursor: pointer;
     transition: .3s linear;
   }
-
 
   &__loadButton {
     margin: 50px 0 0 0;
@@ -86,7 +66,9 @@
     display: block;
     cursor: pointer;
   }
-
+  .myselectSearch{
+    right: 10px;
+  }
 
   .myselect__resetImage {
     height: 27px;
@@ -103,9 +85,8 @@
 
   select:focus + label {
     position: absolute;
-    top: -20px;
+    top: -25px;
     left: 13px;
-
   }
 
   .selectRegion__labelFirst {
@@ -113,23 +94,24 @@
     top: 15px;
     left: 13px;
     color: transparent;
-    //z-index: -1;
+    visibility: hidden;
     transition: top .3s linear;
   }
   .selectRegion__labelFirst:nth-child(2){
     color: inherit;
+    visibility: visible;
   }
 
   .selectRegion__label {
     position: absolute;
-    top: -20px;
+    top: -25px;
     left: 13px;
     color: inherit;
     transition: .3s linear;
   }
 
   .selectRegion:focus + label {
-    top: -20px;
+    top: -25px;
     left: 13px;
 
   }
@@ -143,7 +125,7 @@
   }
 
   &__search:not(:placeholder-shown) + &__searchLabel {
-    top: -20px;
+    top: -25px;
     color: inherit;
   }
 
