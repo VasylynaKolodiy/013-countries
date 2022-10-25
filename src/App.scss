@@ -29,6 +29,9 @@ html{
   min-height: 100vh;
   min-width: 100vw;
 }
+.myMain.dark .css-qc6sy-singleValue{
+  color: white;
+}
 
 .myMain.dark {
   background-color: gray;
@@ -44,11 +47,27 @@ html{
 
 .myMain.dark .myselect option{
   background-color: grey;
+  color: white;
+}
+.myMain.dark .css-1pahdxg-control {
+  background-color: grey;
+  color: white;
 }
 
 .myMain.dark .arrow path{
   fill: white;
 }
+
+.myMain.dark .css-1n7v3ny-option{
+  background-color: darkgrey;
+  color: white;
+
+}
+.myMain.dark .css-4ljt47-MenuList{
+  background-color: grey;
+  color: white;
+}
+
 
 .container {
   padding: 50px 50px;

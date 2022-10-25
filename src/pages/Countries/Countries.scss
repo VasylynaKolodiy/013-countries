@@ -9,9 +9,8 @@
   }
 
   .myselect {
-    height: 50px;
+    height: 49px;
     width: 250px;
-    padding: 0 10px;
     font-size: 16px;
     box-shadow: 0 15px 10px -15px #111;
     background: transparent;
@@ -19,15 +18,30 @@
     color: inherit;
     border: 1px solid darkgrey;
     border-radius: 10px;
+    z-index: 4;
+    padding: 10px;
+  }
+
+  .css-1s2u09g-control {
+    background-color: transparent;
+    min-height: 50px;
+  }
+
+  .css-1s2u09g-control:hover {
+    min-height: 50px;
+    width: 250px;
   }
 
   &__select {
     width: 100%;
+    //height: 190px;
     display: flex;
     align-self: flex-start;
     justify-content: space-between;
-    padding-bottom: 50px;
+    margin-bottom: 40px;
   }
+
+
 
   &__searchButtons {
     position: relative;
@@ -48,14 +62,12 @@
     border: 1px solid darkgrey;
     background-color: transparent;
     transition: .3s linear;
-    &:hover{
+
+    &:hover {
       background-color: darkgrey;
     }
   }
 
-  .myselect__form {
-    position: relative;
-  }
 
   .myselect__reset {
     background-color: transparent;
@@ -66,7 +78,8 @@
     display: block;
     cursor: pointer;
   }
-  .myselectSearch{
+
+  .myselectSearch {
     right: 10px;
   }
 
@@ -89,32 +102,61 @@
     left: 13px;
   }
 
-  .selectRegion__labelFirst {
-    position: absolute;
-    top: 15px;
-    left: 13px;
-    color: transparent;
-    visibility: hidden;
-    transition: top .3s linear;
-  }
-  .selectRegion__labelFirst:nth-child(2){
-    color: inherit;
-    visibility: visible;
+  .selectRegion {
+    position: relative;
   }
 
-  .selectRegion__label {
+  .selectRegion__regionLabel {
     position: absolute;
     top: -25px;
-    left: 13px;
+    left: 10px;
     color: inherit;
     transition: .3s linear;
   }
 
-  .selectRegion:focus + label {
-    top: -25px;
-    left: 13px;
+
+  .css-1hb7zxy-IndicatorsContainer {
+    background-color: inherit;
+  }
+
+
+
+
+  .css-1s2u09g-control {
+    min-height: 50px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 15px 10px -15px #111;
+
+    &:hover {
+      min-height: 50px;
+      border-radius: 10px;
+      box-shadow: 0 15px 10px -15px #111;
+    }
+  }
+
+  .css-1pahdxg-control {
+    min-height: 50px;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 15px 10px -15px #111;
 
   }
+
+  .css-b62m3t-container {
+    border-radius: 10px;
+  }
+
+  .css-26l3qy-menu {
+    z-index: 5;
+    position: absolute;
+  }
+
+  .css-1hb7zxy-IndicatorsContainer{
+    border-radius: 10px;
+  }
+
+
 
   &__searchLabel {
     position: absolute;
@@ -128,5 +170,4 @@
     top: -25px;
     color: inherit;
   }
-
 }

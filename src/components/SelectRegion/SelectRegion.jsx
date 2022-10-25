@@ -1,42 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './SelectRegion.scss'
-import {ReactComponent as ResetButton} from "../../assetes/img/resetButton.svg";
+import Select from "react-select";
 
-const SelectRegion = ({countries, myRegion, setMyRegion, onChangeRegion}) => {
+const SelectRegion = ({countries, myRegion, setMyRegion}) => {
   let regionsSet = new Set();
   countries.filter(country => regionsSet.add(country.region))
   let regions = Array.from(regionsSet)
-  regions.sort()
+  regions.sort();
+  regions = regions.map(item => ({label: item, value: item}))
 
   return (
-    <div>
-      <form className='selectRegion__form myselect__form'>
-        <select
-          className='selectRegion myselect'
-          name="selectRegion"
-          id="selectRegion"
-          onChange={onChangeRegion}
-          value={myRegion}
-        >
-          <option value='' hidden> </option>
-          {regions.map((region, i) => <option value={region} key={i}>{region}</option>)}
-        </select>
-
-
-
-        {myRegion &&
-        <div>
-          <label className='selectRegion__label'
-                 htmlFor='selectRegion'>Filter By Region</label>
-          <button className='myselect__reset' type='reset' onClick={() => setMyRegion('')}>
-            <ResetButton className='myselect__resetImage'/>
-          </button>
-        </div>
-        }
-        <label className='selectRegion__labelFirst'
-               htmlFor='selectRegion'>Filter By Region</label>
-
-      </form>
+    <div className='selectRegion'>
+      <Select
+        className=""
+        id="selectRegion"
+        isMulti
+        isClearable
+        isSearchable
+        value={myRegion}
+        onChange={option => setMyRegion(option)}
+        options={regions}
+        placeholder='All regions'
+        textFieldProps={{
+          label: 'Label',
+          InputLabelProps: {
+            shrink: true,
+          },
+        }}
+      />
+      <label className='selectRegion__regionLabel' htmlFor='selectRegion'>Filter By Region</label>
 
     </div>
   );

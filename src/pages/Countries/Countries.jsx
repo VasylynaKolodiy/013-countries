@@ -6,6 +6,7 @@ import CountriesList from "../../components/CountriesList/CountriesList";
 import SelectRegion from "../../components/SelectRegion/SelectRegion";
 import {ReactComponent as ResetButton} from "../../assetes/img/resetButton.svg";
 import Loader from "../../components/Loader/Loader";
+import Select from "react-select";
 
 
 const Countries = () => {
@@ -20,24 +21,31 @@ const Countries = () => {
     fetchCountries()
   }, []) //eslint-disable-line
 
-  const startCount = 8;
-  let [count, setCount] = useState(startCount);
+  const countOptions = [
+    {value: '8', label: '8'},
+    {value: '16', label: '16'},
+    {value: '32', label: '32'},
+    {value: '64', label: '64'},
+    {value: countries.length, label: 'All'},
+  ]
+
+  let [count, setCount] = useState(countOptions[0]);
   let [countOnPage, setCountOnPage] = useState(count);
 
-  function onChangeCount(event) {
-    setCount(event.target.value)
-    setCountOnPage(event.target.value)
+  function onChangeCount(option) {
+    setCount(option)
+    setCountOnPage(option)
   }
 
-  let [myRegion, setMyRegion] = useState('');
+  let [myRegion, setMyRegion] = useState([]);
+  let onlyRegionValue = myRegion.map(reg => reg.value)
 
-  function onChangeRegion(event) {
-    setMyRegion(event.target.value)
-  }
+  console.log(myRegion.value, 'myRegion.value')
+  console.log(myRegion, 'myRegion')
 
   let countriesByRegion
-  myRegion
-    ? countriesByRegion = countries.filter(cntr => cntr.region === myRegion)
+  myRegion.length > 0
+    ? countriesByRegion = countries.filter(cntr => onlyRegionValue.includes(cntr.region))
     : countriesByRegion = countries
 
   let [searchCountry, setSearchCountry] = useState('')
@@ -51,6 +59,9 @@ const Countries = () => {
   }
 
   let mySearchCountriesInRegion = searchMyCountry()
+
+  console.log(countriesByRegion, 'countriesByRegion')
+
 
   return (
     <div className='countriesPage'>
@@ -79,56 +90,36 @@ const Countries = () => {
                          }}>
                 <ResetButton className='myselect__resetImage'/>
               </button>}
-
-
             </div>
 
 
-            <SelectRegion countries={countries} myRegion={myRegion} setMyRegion={setMyRegion}
-                          onChangeRegion={onChangeRegion}>
-            </SelectRegion>
+            <SelectRegion countries={countries} myRegion={myRegion} setMyRegion={setMyRegion}/>
 
             <div>
-              <form className='countriesPage__form myselect__form'>
-
-                <select className='countriesPage__count myselect'
-                        name="countriesPage__count"
-                        id="countriesPage__count"
-                        value={count}
-                        onChange={event => onChangeCount(event)}>
-                  <option value="8">8</option>
-                  <option value="16">16</option>
-                  <option value="32">32</option>
-                  <option value="64">64</option>
-                  <option value={countries.length}>All</option>
-                </select>
-                <label className='countriesPage__countLabel'
-                       htmlFor='countriesPage__count'>Countries on page</label>
-
-                {Number(count) !== 8 &&
-                <button className='myselect__reset' type='reset'
-                        onClick={() => {
-                          setCount(startCount);
-                          setCountOnPage(startCount)
-                        }}>
-                  <ResetButton className='myselect__resetImage'/>
-                </button>}
-              </form>
+                <Select
+                  className="countriesPage__count"
+                  isSearchable
+                  value={count}
+                  onChange={option => onChangeCount(option)}
+                  options={countOptions}
+                  placeholder='Countries on page'
+                />
             </div>
           </div>
 
           {
             mySearchCountriesInRegion.length > 0
               ? <CountriesList countries={mySearchCountriesInRegion}
-                               countOnPage={countOnPage}>
+                               countOnPage={countOnPage.value}>
               </CountriesList>
               : <h2>No country found</h2>
           }
 
-          {countOnPage < mySearchCountriesInRegion.length &&
+          {countOnPage.value < mySearchCountriesInRegion.length &&
           <button className='countriesPage__loadButton'
-                  onClick={() => setCountOnPage(Number(countOnPage) + Number(count))}>
-            +{count} countries load...</button>
+                  onClick={() =>
+                    setCountOnPage({...countOnPage, value: Number(countOnPage.value) + Number(count.value)})}>
+            +{count.value} countries load...</button>
           }
         </div>
       }
