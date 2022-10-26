@@ -6,7 +6,8 @@
   box-shadow: 0 15px 10px -15px #111;
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0 auto;
   width: 100%;
   z-index: 20;
@@ -27,5 +28,4 @@
     fill: white;
     transition: .3s linear;
   }
-
 }

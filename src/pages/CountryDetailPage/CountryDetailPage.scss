@@ -126,6 +126,35 @@
     top: -48px;
     left: 150px;
   }
+}
 
+//
 
+@media(max-width: 900px) {
+
+  .countryDetail__table {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media(max-width: 800px) {
+
+  .countryDetail__noborders {
+    position: static;
+  }
+}
+
+@media(max-width: 700px) {
+  .countryDetail__container {
+    flex-direction: column;
+  }
+
+  .countryDetail__info {
+    width: 100%;
+    align-self: flex-start;
+  }
+  .countryDetail__title {
+    text-align: center;
+  }
 }

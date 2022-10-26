@@ -4,9 +4,11 @@ import {useFetching} from "../../hooks/useFetching";
 import getDataCountries from "../../helpersFunctions/getDataCountries";
 import CountriesList from "../../components/CountriesList/CountriesList";
 import SelectRegion from "../../components/SelectRegion/SelectRegion";
-import {ReactComponent as ResetButton} from "../../assetes/img/resetButton.svg";
 import Loader from "../../components/Loader/Loader";
-import Select from "react-select";
+import SelectSearch from "../../components/SelectSearch/SelectSearch";
+import SelectCount from "../../components/SelectCount/SelectCount";
+import {ReactComponent as SettingButton} from '../../assetes/img/settingButton.svg'
+import {ReactComponent as ResetButton} from '../../assetes/img/resetButton.svg'
 
 
 const Countries = () => {
@@ -40,9 +42,6 @@ const Countries = () => {
   let [myRegion, setMyRegion] = useState([]);
   let onlyRegionValue = myRegion.map(reg => reg.value)
 
-  console.log(myRegion.value, 'myRegion.value')
-  console.log(myRegion, 'myRegion')
-
   let countriesByRegion
   myRegion.length > 0
     ? countriesByRegion = countries.filter(cntr => onlyRegionValue.includes(cntr.region))
@@ -60,8 +59,7 @@ const Countries = () => {
 
   let mySearchCountriesInRegion = searchMyCountry()
 
-  console.log(countriesByRegion, 'countriesByRegion')
-
+  let [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className='countriesPage'>
@@ -69,50 +67,54 @@ const Countries = () => {
         ? <Loader/>
         : <div className='countriesPage__container container'>
 
+          <SettingButton className='openModal' onClick={() => setIsOpen(!isOpen)}/>
+
           <div className='countriesPage__select'>
+            <SelectSearch idSearch='countriesPage__search'
+                          searchCountry={searchCountry}
+                          onChangeSearch={onChangeSearch}
+                          setSearchCountry={setSearchCountry}/>
 
-            <div className="countriesPage__searchButtons">
-              <input className='countriesPage__search myselect'
-                     id='countriesPage__search'
-                     type='search'
-                     value={searchCountry}
-                     onChange={onChangeSearch}
-                     placeholder=' '/>
+            <SelectRegion idRegion="selectRegion"
+                          countries={countries}
+                          myRegion={myRegion}
+                          setMyRegion={setMyRegion}/>
 
-              <label className='countriesPage__searchLabel'
-                     htmlFor='countriesPage__search'>Search for a country...</label>
+            <SelectCount idCount='countriesPage__count'
+                         count={count}
+                         onChangeCount={onChangeCount}
+                         countOptions={countOptions}/>
+          </div>
 
-              {searchCountry
-              && <button className='myselect__reset myselectSearch'
-                         type='reset'
-                         onClick={() => {
-                           setSearchCountry('')
-                         }}>
-                <ResetButton className='myselect__resetImage'/>
-              </button>}
+          <div className={`modal ${isOpen ? 'isOpen' : ''}`}>
+
+            <div className='modal__overlay' onClick={() => setIsOpen(!isOpen)}>
+              <ResetButton className='closeModal'/>
             </div>
 
+            <div className='modalWrapper'>
+              <SelectSearch idSearch='countriesPage__searchModal'
+                            searchCountry={searchCountry}
+                            onChangeSearch={onChangeSearch}
+                            setSearchCountry={setSearchCountry}/>
 
-            <SelectRegion countries={countries} myRegion={myRegion} setMyRegion={setMyRegion}/>
+              <SelectRegion idRegion="selectRegionModal"
+                            countries={countries}
+                            myRegion={myRegion}
+                            setMyRegion={setMyRegion}/>
 
-            <div>
-                <Select
-                  className="countriesPage__count"
-                  isSearchable
-                  value={count}
-                  onChange={option => onChangeCount(option)}
-                  options={countOptions}
-                  placeholder='Countries on page'
-                />
+              <SelectCount idCount='countriesPage__countModal'
+                           count={count}
+                           onChangeCount={onChangeCount}
+                           countOptions={countOptions}/>
             </div>
           </div>
 
-          {
-            mySearchCountriesInRegion.length > 0
-              ? <CountriesList countries={mySearchCountriesInRegion}
-                               countOnPage={countOnPage.value}>
-              </CountriesList>
-              : <h2>No country found</h2>
+          {mySearchCountriesInRegion.length > 0
+            ? <CountriesList countries={mySearchCountriesInRegion}
+                             countOnPage={countOnPage.value}>
+            </CountriesList>
+            : <h2>No country found</h2>
           }
 
           {countOnPage.value < mySearchCountriesInRegion.length &&

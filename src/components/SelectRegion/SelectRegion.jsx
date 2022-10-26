@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
-import './SelectRegion.scss'
+import React from 'react';
 import Select from "react-select";
 
-const SelectRegion = ({countries, myRegion, setMyRegion}) => {
+const SelectRegion = ({idRegion, countries, myRegion, setMyRegion}) => {
   let regionsSet = new Set();
   countries.filter(country => regionsSet.add(country.region))
   let regions = Array.from(regionsSet)
@@ -13,9 +12,10 @@ const SelectRegion = ({countries, myRegion, setMyRegion}) => {
     <div className='selectRegion'>
       <Select
         className=""
-        id="selectRegion"
+        // id="selectRegion"
+        id={idRegion}
         isMulti
-        isClearable
+        closeMenuOnSelect={false}
         isSearchable
         value={myRegion}
         onChange={option => setMyRegion(option)}
@@ -28,7 +28,7 @@ const SelectRegion = ({countries, myRegion, setMyRegion}) => {
           },
         }}
       />
-      <label className='selectRegion__regionLabel' htmlFor='selectRegion'>Filter By Region</label>
+      <label className='selectRegion__regionLabel' htmlFor={idRegion}>Filter By Region</label>
 
     </div>
   );

@@ -1,11 +1,12 @@
 .countriesPage {
   padding-top: 70px;
+  position: relative;
 
   &__container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
+    position: relative;
   }
 
   .myselect {
@@ -22,6 +23,10 @@
     padding: 10px;
   }
 
+  &__countWrapper {
+    position: relative;
+  }
+
   .css-1s2u09g-control {
     background-color: transparent;
     min-height: 50px;
@@ -34,14 +39,12 @@
 
   &__select {
     width: 100%;
-    //height: 190px;
     display: flex;
     align-self: flex-start;
     justify-content: space-between;
+    margin-top: 20px;
     margin-bottom: 40px;
   }
-
-
 
   &__searchButtons {
     position: relative;
@@ -68,7 +71,6 @@
     }
   }
 
-
   .myselect__reset {
     background-color: transparent;
     border: none;
@@ -90,8 +92,8 @@
 
   &__countLabel {
     position: absolute;
-    top: 15px;
-    left: 35px;
+    top: -25px;
+    left: 10px;
     color: inherit;
     transition: .3s linear;
   }
@@ -114,13 +116,9 @@
     transition: .3s linear;
   }
 
-
   .css-1hb7zxy-IndicatorsContainer {
     background-color: inherit;
   }
-
-
-
 
   .css-1s2u09g-control {
     min-height: 50px;
@@ -140,7 +138,6 @@
     width: 250px;
     border-radius: 10px;
     box-shadow: 0 15px 10px -15px #111;
-
   }
 
   .css-b62m3t-container {
@@ -152,11 +149,9 @@
     position: absolute;
   }
 
-  .css-1hb7zxy-IndicatorsContainer{
+  .css-1hb7zxy-IndicatorsContainer {
     border-radius: 10px;
   }
-
-
 
   &__searchLabel {
     position: absolute;
@@ -171,3 +166,109 @@
     color: inherit;
   }
 }
+
+.modal.isOpen {
+  display: flex;
+}
+
+.modal {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 50px 10px;
+  width: 100%;
+  height: 100vh;
+  align-items: flex-start;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+}
+
+.modalWrapper {
+  border: 1px solid darkgrey;
+  width: 90%;
+  padding: 30px 10px;
+  display: flex;
+  gap: 50px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+
+  .myselect,
+  .css-1s2u09g-control:hover,
+  .css-1s2u09g-control,
+  .css-1pahdxg-control {
+    width: 300px;
+  }
+}
+
+.modal__overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.closeModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    & path {
+      fill: black;
+    }
+  }
+}
+
+.closeModal path {
+  fill: white;
+  transition: .3s linear;
+}
+
+.openModal {
+  width: 30px;
+  height: 30px;
+  display: none;
+  align-self: flex-end;
+  transition: .6s linear;
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+}
+
+
+//
+
+@media(max-width: 900px) {
+  .countriesPage {
+    .myselect,
+    .css-1s2u09g-control:hover,
+    .css-1s2u09g-control,
+    .css-1pahdxg-control {
+      width: 170px;
+    }
+  }
+}
+
+@media(max-width: 750px) {
+  .countriesPage__select {
+    display: none;
+  }
+  .openModal {
+    display: block;
+  }
+}
+

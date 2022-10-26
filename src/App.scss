@@ -13,9 +13,11 @@ a {
   text-decoration: none;
   color: inherit;
 }
-html{
+
+html {
   overflow-x: hidden;
 }
+
 .App {
   text-align: center;
 }
@@ -29,50 +31,60 @@ html{
   min-height: 100vh;
   min-width: 100vw;
 }
-.myMain.dark .css-qc6sy-singleValue{
-  color: white;
-}
-
-.myMain.dark {
-  background-color: gray;
-  color: white;
-}
-
-.myMain.dark .myselect__resetImage path{
-  fill: white;
-}
-.myMain.dark .myselect {
-  color: white;
-}
-
-.myMain.dark .myselect option{
-  background-color: grey;
-  color: white;
-}
-.myMain.dark .css-1pahdxg-control {
-  background-color: grey;
-  color: white;
-}
-
-.myMain.dark .arrow path{
-  fill: white;
-}
-
-.myMain.dark .css-1n7v3ny-option{
-  background-color: darkgrey;
-  color: white;
-
-}
-.myMain.dark .css-4ljt47-MenuList{
-  background-color: grey;
-  color: white;
-}
-
 
 .container {
   padding: 50px 50px;
   max-width: 1500px;
   margin: 0 auto;
 }
+
+.myMain.dark {
+  background-color: gray;
+  color: white;
+
+  & .css-qc6sy-singleValue,
+  & .myselect,
+  & .css-14el2xx-placeholder{
+    color: white;
+  }
+
+  & .myselect__resetImage path,
+  & .arrow path,
+  & .openModal path{
+    fill: white;
+  }
+
+  & .myselect option,
+  & .css-1pahdxg-control,
+  & .css-4ljt47-MenuList,
+  & .modalWrapper{
+    background-color: grey;
+    color: white;
+  }
+
+  & .css-1n7v3ny-option {
+    background-color: darkgrey;
+    color: white;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
