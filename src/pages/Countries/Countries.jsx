@@ -67,7 +67,13 @@ const Countries = () => {
         ? <Loader/>
         : <div className='countriesPage__container container'>
 
-          <SettingButton className='openModal' onClick={() => setIsOpen(!isOpen)}/>
+
+          <div className='setting'>
+            <SettingButton className={`openModal ${(myRegion.length > 0 || searchCountry !== '') ? 'red' : ''}`}
+                           onClick={() => setIsOpen(!isOpen)}/>
+            <div>Filters</div>
+          </div>
+
 
           <div className='countriesPage__select'>
             <SelectSearch idSearch='countriesPage__search'
@@ -109,6 +115,7 @@ const Countries = () => {
                            countOptions={countOptions}/>
             </div>
           </div>
+
 
           {mySearchCountriesInRegion.length > 0
             ? <CountriesList countries={mySearchCountriesInRegion}

@@ -12,7 +12,6 @@ const SelectRegion = ({idRegion, countries, myRegion, setMyRegion}) => {
     <div className='selectRegion'>
       <Select
         className=""
-        // id="selectRegion"
         id={idRegion}
         isMulti
         closeMenuOnSelect={false}
