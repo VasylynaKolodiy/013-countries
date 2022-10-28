@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Header.scss'
 import {Link} from "react-router-dom";
 import {ReactComponent as Light} from '../../assetes/img/light.svg';
@@ -6,13 +6,11 @@ import {ReactComponent as Light} from '../../assetes/img/light.svg';
 const Header = ({lightMode, setLightMode}) => {
 
   function setMode() {
-    lightMode === 'Light'
-      ? setLightMode('Dark')
-      : setLightMode('Light')
+    let newMode = lightMode === 'Light' ? 'Dark' : 'Light'
 
-    lightMode === 'Light'
-      ? localStorage.setItem('lightMode', 'Dark')
-      : localStorage.setItem('lightMode', 'Light')
+    setLightMode(newMode)
+    localStorage.setItem('lightMode', newMode)
+
   }
 
   return (
@@ -21,7 +19,7 @@ const Header = ({lightMode, setLightMode}) => {
         <Link className="header__homeLink" to="/">Where is the world?</Link>
       </div>
 
-      <div className="header__thema" onClick={() => setMode()}>
+      <div className="header__thema" onClick={setMode}>
         <Light className={lightMode}/>
         <div className="header__themaLight">{`${lightMode} mode`}</div>
       </div>

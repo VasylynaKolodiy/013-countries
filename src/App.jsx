@@ -5,11 +5,8 @@ import AppRouter from "./routers/AppRouter/AppRouter";
 import Header from "./components/Header/Header";
 
 function App() {
-  let lightModeStorage;
-  localStorage.getItem('lightMode')
-    ? lightModeStorage = localStorage.getItem('lightMode')
-    : lightModeStorage = 'Light'
-  let [lightMode, setLightMode] = useState(lightModeStorage)
+
+  let [lightMode, setLightMode] = useState(localStorage.getItem('lightMode') || 'Light')
 
   return (
     <div className={`myMain ${lightMode}`}>
