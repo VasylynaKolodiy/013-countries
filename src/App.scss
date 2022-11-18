@@ -55,6 +55,7 @@ html {
   }
 
   & .myselect option,
+  & .myselect option > div,
   & .css-1pahdxg-control,
   & .css-4ljt47-MenuList,
   & .modalWrapper{
@@ -65,6 +66,14 @@ html {
   & .css-1n7v3ny-option {
     background-color: darkgrey;
     color: white;
+  }
+
+  & .selectRegion div div + div div{
+    background-color: gray;
+  }
+
+  & .countriesPage__countWrapper div div + div div{
+    background-color: gray;
   }
 }
 

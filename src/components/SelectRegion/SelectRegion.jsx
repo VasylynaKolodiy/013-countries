@@ -3,6 +3,7 @@ import Select from "react-select";
 
 const SelectRegion = ({idRegion, countries, myRegion, setMyRegion}) => {
   let regionsSet = new Set();
+
   countries.filter(country => regionsSet.add(country.region))
   let regions = Array.from(regionsSet)
   regions.sort();
