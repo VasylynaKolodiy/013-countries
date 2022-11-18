@@ -71,7 +71,7 @@ const Countries = () => {
           <div className='setting'>
             <SettingButton className={`openModal ${(myRegion.length > 0 || searchCountry !== '') ? 'red' : ''}`}
                            onClick={() => setIsOpen(!isOpen)}/>
-            <div>Filters</div>
+             <div className='setting__label'>Filters</div>
           </div>
 
 

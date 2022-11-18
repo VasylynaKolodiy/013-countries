@@ -197,8 +197,9 @@
   background-color: white;
   border-radius: 10px;
 }
+
 .countriesPage {
-  .modalWrapper{
+  .modalWrapper {
     .myselect,
     .css-1s2u09g-control:hover,
     .css-1s2u09g-control,
@@ -253,16 +254,16 @@
   }
 }
 
-.openModal.red{
+.openModal.red {
   position: relative;
 }
 
-.openModal.red path{
- fill: red;
+.openModal.red path {
+  fill: red;
 }
 
 .openModal.red + div {
-  &::after{
+  &::after {
     content: '.';
     position: absolute;
     top: -40px;
@@ -275,7 +276,7 @@
   }
 }
 
-.setting{
+.setting {
   display: flex;
   align-self: flex-end;
   flex-direction: row-reverse;
@@ -286,16 +287,20 @@
   gap: 10px;
 }
 
+.setting__label {
+  display: none;
+}
+
 //
 
 @media(max-width: 900px) {
   .countriesPage {
-      .myselect,
-      .css-1s2u09g-control:hover,
-      .css-1s2u09g-control,
-      .css-1pahdxg-control {
-        width: 170px;
-      }
+    .myselect,
+    .css-1s2u09g-control:hover,
+    .css-1s2u09g-control,
+    .css-1pahdxg-control {
+      width: 170px;
+    }
   }
 }
 
@@ -306,11 +311,14 @@
   .openModal {
     display: block;
   }
+  .setting__label {
+    display: block;
+  }
 }
 
 @media(max-width: 600px) {
   .countriesPage {
-    .modalWrapper{
+    .modalWrapper {
       .myselect,
       .css-1s2u09g-control:hover,
       .css-1s2u09g-control,
@@ -323,7 +331,7 @@
 
 @media(max-width: 500px) {
   .countriesPage {
-    .modalWrapper{
+    .modalWrapper {
       .myselect,
       .css-1s2u09g-control:hover,
       .css-1s2u09g-control,
@@ -336,7 +344,7 @@
 
 @media(max-width: 400px) {
   .countriesPage {
-    .modalWrapper{
+    .modalWrapper {
       .myselect,
       .css-1s2u09g-control:hover,
       .css-1s2u09g-control,
