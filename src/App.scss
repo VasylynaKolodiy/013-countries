@@ -71,10 +71,17 @@ html {
   & .selectRegion div div + div div{
     background-color: gray;
   }
+  & .selectRegion div div + div div div:hover{
+    background-color: darkgrey;
+  }
 
   & .countriesPage__countWrapper div div + div div{
     background-color: gray;
   }
+  & .countriesPage__countWrapper div div + div div div:hover{
+    background-color: darkgrey;
+  }
+
 }
 
 
